@@ -39,8 +39,9 @@ function atualizarPerfilDiscord(userId) {
 // Inside your API response handling:
         // Inside your API response handler:
         // Inside the API response handler:
+// Replace the decoration handling section with:
         if (user.avatar_decoration_data) {
-            const decorationUrl = `https://cdn.discordapp.com/avatar-decoration-presets/${user.avatar_decoration_data.asset}.png?size=512`;
+            const decorationUrl = `https://cdn.discordapp.com/avatar-decoration-presets/${user.avatar_decoration_data.asset}.png?size=240&passthrough=false`;
             decorationElement.style.backgroundImage = `url('${decorationUrl}')`;
             decorationElement.style.display = 'block';
         } else {
