@@ -34,45 +34,32 @@ function atualizarPerfilDiscord(userId) {
             }
         }
         
-        // Update avatar decoration
+        // Update avatar decoration - NEW ROBUST METHOD
         const decorationElement = document.querySelector('.avatarDecoration');
-// Inside your API response handling:
-        // Inside your API response handler:
-        // Inside the API response handler:
-// Replace the decoration handling section with:
         if (user.avatar_decoration_data) {
             const asset = user.avatar_decoration_data.asset;
             const decorationUrl = `https://cdn.discordapp.com/avatar-decoration-presets/${asset}.png?size=512`;
             
-            console.log("Decoration URL:", decorationUrl);
-            
-            const decorationElement = document.querySelector('.avatarDecoration');
-            decorationElement.style.backgroundImage = `url('${decorationUrl}')`;
-            decorationElement.style.display = 'block';
-            
-            // Add this to debug
-            decorationElement.style.border = '1px solid red'; // Temporary debug
+            // Create new image to force load
+            const testImg = new Image();
+            testImg.onload = function() {
+                // Apply only after image loads successfully
+                decorationElement.style.backgroundImage = `url('${decorationUrl}')`;
+                decorationElement.style.display = 'block';
+                console.log('Decoration loaded successfully');
+            };
+            testImg.onerror = function() {
+                console.error('Failed to load decoration image');
+                decorationElement.style.display = 'none';
+            };
+            testImg.src = decorationUrl;
         } else {
-            document.querySelector('.avatarDecoration').style.display = 'none';
-        }
-            
-            applyDecorationStyle();
-        } else {
-            decorationElement.style.backgroundImage = '';
-        }
-                
-        // Update username if element exists
-        const usernameElement = document.querySelector('.username');
-        if (usernameElement && user.username) {
-            usernameElement.textContent = `${user.username}${user.discriminator !== "0" ? `#${user.discriminator}` : ''}`;
+            decorationElement.style.display = 'none';
         }
     })
     .catch(error => {
         console.error('Erro ao buscar status:', error);
-        const statusElement = document.querySelector('.status-debugging');
-        if (statusElement) {
-            statusElement.textContent = 'Erro ao conectar: ' + error.message;
-            statusElement.style.color = 'red';
-        }
     });
 }
+
+// Rest of the file remains the same...
