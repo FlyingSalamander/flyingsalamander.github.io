@@ -41,11 +41,19 @@ function atualizarPerfilDiscord(userId) {
         // Inside the API response handler:
 // Replace the decoration handling section with:
         if (user.avatar_decoration_data) {
-            const decorationUrl = `https://cdn.discordapp.com/avatar-decoration-presets/${user.avatar_decoration_data.asset}.png?size=240&passthrough=false`;
+            const asset = user.avatar_decoration_data.asset;
+            const decorationUrl = `https://cdn.discordapp.com/avatar-decoration-presets/${asset}.png?size=512`;
+            
+            console.log("Decoration URL:", decorationUrl);
+            
+            const decorationElement = document.querySelector('.avatarDecoration');
             decorationElement.style.backgroundImage = `url('${decorationUrl}')`;
             decorationElement.style.display = 'block';
+            
+            // Add this to debug
+            decorationElement.style.border = '1px solid red'; // Temporary debug
         } else {
-            decorationElement.style.display = 'none';
+            document.querySelector('.avatarDecoration').style.display = 'none';
         }
             
             applyDecorationStyle();
