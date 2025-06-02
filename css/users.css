@@ -1143,3 +1143,28 @@ body {
 .discordStatus {
     z-index: 3;
 }
+
+/* Add this at the bottom of users.css */
+.avatarDecoration {
+    display: block !important; /* Force display */
+    opacity: 1 !important; /* Force visibility */
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    z-index: 2 !important;
+}
+
+/* Status positioning fix */
+.discordAvatar .discordStatus {
+    position: absolute;
+    bottom: 0px !important;
+    right: 0px !important;
+    height: 20% !important;
+    width: 20% !important;
+    min-width: 16px;
+    min-height: 16px;
+    z-index: 3 !important;
+    border: 2px solid #2f3136 !important;
+    border-radius: 50%;
+    transform: translate(25%, 25%) !important;
+}
