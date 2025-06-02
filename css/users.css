@@ -1051,24 +1051,23 @@ body {
     align-items: center;
 }
 .discordAvatar .avatarImage {
-    width: 70px !important;
-    height: 70px !important;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     object-fit: cover;
+    position: relative;
+    z-index: 1;
 }
-
 /* Add this to fix the status icon */
 .discordAvatar .discordStatus {
     position: absolute;
-    bottom: 2px !important;
-    right: 2px !important;
-    height: 17px !important;
-    width: 17px !important;
+    bottom: 2px;
+    right: 2px;
+    height: 17px;
+    width: 17px;
     z-index: 3;
-    border: none !important; /* Remove black border */
     border-radius: 50%;
-    box-shadow: none !important;
-    transform: none !important;
+    border: 2px solid #2f3136;
 }
 
 @keyframes discordFloat {
@@ -1101,18 +1100,21 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100%; /* Changed from 90% */
-    height: 100%; /* Changed from 90% */
+    width: 120%; /* Increased size */
+    height: 120%; /* Increased size */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     pointer-events: none;
     z-index: 2;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1.1);
     animation: 
         discordFloat 8s ease-in-out infinite,
         discordShimmer 12s ease-in-out infinite;
+    /* Remove after debugging */
+    background-color: rgba(0,0,0,0.2);
 }
+
 /* Prevent decoration flickering */
 .avatarDecoration {
     transition: opacity 0.3s ease;
