@@ -211,8 +211,14 @@ a, button, .linkedAccountsRedirect svg, .popup-button {
             <div class="presenceContainer">
                 <div class="discordInfos">
                     <div class="discordAvatar">
-                        <img class="avatarImage" src="https://cdn.discordapp.com/avatars/504586268781576202/d561b229a6c26cf3beb49cecebbb4978.webp?size=2048" alt="Discord Avatar">
-                        <div class="avatarDecoration"></div> <!-- Add this line -->
+                        <!-- Avatar first -->
+                        <img class="avatarImage" src="https://cdn.discordapp.com/avatars/504586268781576202/d561b229a6c26cf3beb49cecebbb4978.webp?size=2048"
+                            alt="Discord Avatar">
+                        
+                        <!-- Decoration second -->
+                        <div class="avatarDecoration"></div>
+                        
+                        <!-- Status last (on top) -->
                         <img class="discordStatus" src="/img/idle.png" alt="idle">
                     </div>
                     <div class="discordActivity">
@@ -537,6 +543,30 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(tryPlayRainAudio, 1000);
 });
   </script>
+    <script>
+    // Temporary debug helper
+    function checkDecoration() {
+        const decoration = document.querySelector('.avatarDecoration');
+        if (!decoration) {
+            console.error('Decoration element not found!');
+            return;
+        }
+        
+        console.log('Decoration styles:');
+        console.log('display:', getComputedStyle(decoration).display);
+        console.log('opacity:', getComputedStyle(decoration).opacity);
+        console.log('background-image:', getComputedStyle(decoration).backgroundImage);
+        console.log('z-index:', getComputedStyle(decoration).zIndex);
+        
+        // Try to force apply the decoration
+        const testUrl = "https://cdn.discordapp.com/avatar-decoration-presets/a_c86b11a49bb8057ce9c974a6f7ad658a.png?size=512";
+        decoration.style.backgroundImage = `url('${testUrl}')`;
+        decoration.style.display = 'block';
+    }
+    
+    // Run after 3 seconds
+    setTimeout(checkDecoration, 3000);
+    </script>
 </body>
 
 </html>
