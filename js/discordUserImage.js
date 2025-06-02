@@ -38,22 +38,14 @@ function atualizarPerfilDiscord(userId) {
         const decorationElement = document.querySelector('.avatarDecoration');
 // Inside your API response handling:
         // Inside your API response handler:
+        // Inside the API response handler:
         if (user.avatar_decoration_data) {
             const decorationUrl = `https://cdn.discordapp.com/avatar-decoration-presets/${user.avatar_decoration_data.asset}.png?size=512`;
             decorationElement.style.backgroundImage = `url('${decorationUrl}')`;
-            
-            // Discord's exact decoration positioning logic
-            const applyDecorationStyle = () => {
-                decorationElement.style.width = '110%';
-                decorationElement.style.height = '110%';
-                
-                // Special handling for specific decoration types
-                if (user.avatar_decoration_data.asset.includes('halo')) {
-                    decorationElement.style.top = '48%';
-                    decorationElement.style.transform = 'translate(-50%, -50%) scale(1.25)';
-                }
-                // Add more special cases as needed
-            };
+            decorationElement.style.display = 'block';
+        } else {
+            decorationElement.style.display = 'none';
+        }
             
             applyDecorationStyle();
         } else {
