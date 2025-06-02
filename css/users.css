@@ -1051,42 +1051,38 @@ body {
     align-items: center;
 }
 .discordAvatar .avatarImage {
+    width: 70px !important;
+    height: 70px !important;
     border-radius: 50%;
-    height: 70px;
-    width: 70px;
     object-fit: cover;
-    position: relative;
-    z-index: 1;
 }
 
+/* Add this to fix the status icon */
 .discordAvatar .discordStatus {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 20px;
-    width: 20px;
+    bottom: 2px !important;
+    right: 2px !important;
+    height: 17px !important;
+    width: 17px !important;
     z-index: 3;
+    border: none !important; /* Remove black border */
     border-radius: 50%;
-    /* Remove black border */
-    border: none;
-    /* Original positioning */
-    transform: translate(10%, 10%);
-    box-shadow: 0 0 0 2px #2f3136;
+    box-shadow: none !important;
+    transform: none !important;
 }
 
-/* Keep existing animations */
 @keyframes discordFloat {
   0%, 100% {
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1.1);
   }
   25% {
-    transform: translate(-50%, -51%);
+    transform: translate(-50%, -51%) scale(1.11);
   }
   50% {
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1.1);
   }
   75% {
-    transform: translate(-50%, -49%);
+    transform: translate(-50%, -49%) scale(1.09);
   }
 }
 
@@ -1101,19 +1097,18 @@ body {
     filter: brightness(100%) saturate(100%);
   }
 }
-
 .avatarDecoration {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 90%;
-    height: 90%;
+    width: 90%; /* Reduced size */
+    height: 90%; /* Reduced size */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     pointer-events: none;
     z-index: 2;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1.1); /* Perfect centering */
     animation: 
         discordFloat 8s ease-in-out infinite,
         discordShimmer 12s ease-in-out infinite;
@@ -1122,4 +1117,15 @@ body {
 /* Prevent decoration flickering */
 .avatarDecoration {
     transition: opacity 0.3s ease;
+}
+
+/* Temporary debug styles - remove after fixing */
+.discordAvatar {
+    outline: 1px solid red;
+}
+.avatarDecoration {
+    outline: 1px solid blue;
+}
+.avatarImage {
+    outline: 1px solid green;
 }
