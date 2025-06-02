@@ -1041,3 +1041,42 @@ body {
     }
 }
 
+/* Discord Avatar with Decoration Styles */
+.discordAvatar {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.avatarDecoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+    z-index: 2;
+    transform: scale(1.2);
+}
+
+.discordAvatar .avatarImage {
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+}
+
+.discordAvatar .discordStatus {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    height: 17px;
+    width: 17px;
+    z-index: 3;
+}
+
