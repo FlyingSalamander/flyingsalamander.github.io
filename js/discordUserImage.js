@@ -36,14 +36,14 @@ function atualizarPerfilDiscord(userId) {
         
         // Update avatar decoration
         const decorationElement = document.querySelector('.avatarDecoration');
-        if (user.avatar_decoration) {
-            // Construct the decoration URL
-            const decorationUrl = `https://cdn.discordapp.com/avatar-decoration-presets/${user.avatar_decoration}.png?size=240&passthrough=false`;
+        if (user.avatar_decoration_data) {
+            const decorationUrl = `https://cdn.discordapp.com/avatar-decoration-presets/${user.avatar_decoration_data.asset}.png?size=240&passthrough=false`;
             decorationElement.style.backgroundImage = `url('${decorationUrl}')`;
             decorationElement.style.display = 'block';
             
-            // Adjust positioning if needed
+            // Additional positioning if needed
             decorationElement.style.transform = 'scale(1.2)';
+            decorationElement.style.backgroundSize = 'contain';
         } else {
             decorationElement.style.display = 'none';
         }
