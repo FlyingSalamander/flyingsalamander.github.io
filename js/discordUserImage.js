@@ -36,18 +36,30 @@ function atualizarPerfilDiscord(userId) {
         
         // Update avatar decoration
         const decorationElement = document.querySelector('.avatarDecoration');
+// Inside your API response handling:
+        // Inside your API response handler:
         if (user.avatar_decoration_data) {
-            const decorationUrl = `https://cdn.discordapp.com/avatar-decoration-presets/${user.avatar_decoration_data.asset}.png?size=240&passthrough=false`;
+            const decorationUrl = `https://cdn.discordapp.com/avatar-decoration-presets/${user.avatar_decoration_data.asset}.png?size=512`;
             decorationElement.style.backgroundImage = `url('${decorationUrl}')`;
-            decorationElement.style.display = 'block';
             
-            // Additional positioning if needed
-            decorationElement.style.transform = 'scale(1.2)';
-            decorationElement.style.backgroundSize = 'contain';
+            // Discord's exact decoration positioning logic
+            const applyDecorationStyle = () => {
+                decorationElement.style.width = '110%';
+                decorationElement.style.height = '110%';
+                
+                // Special handling for specific decoration types
+                if (user.avatar_decoration_data.asset.includes('halo')) {
+                    decorationElement.style.top = '48%';
+                    decorationElement.style.transform = 'translate(-50%, -50%) scale(1.25)';
+                }
+                // Add more special cases as needed
+            };
+            
+            applyDecorationStyle();
         } else {
-            decorationElement.style.display = 'none';
+            decorationElement.style.backgroundImage = '';
         }
-        
+                
         // Update username if element exists
         const usernameElement = document.querySelector('.username');
         if (usernameElement && user.username) {
