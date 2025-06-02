@@ -42,8 +42,8 @@ function atualizarPerfilDiscord(userId) {
             decorationElement.style.backgroundImage = `url('${decorationUrl}')`;
             decorationElement.style.display = 'block';
             
-            // Adjust positioning if needed (some decorations may need specific adjustments)
-            decorationElement.style.transform = 'scale(1.2)'; // Example adjustment
+            // Adjust positioning if needed
+            decorationElement.style.transform = 'scale(1.2)';
         } else {
             decorationElement.style.display = 'none';
         }
@@ -61,33 +61,5 @@ function atualizarPerfilDiscord(userId) {
             statusElement.textContent = 'Erro ao conectar: ' + error.message;
             statusElement.style.color = 'red';
         }
-    });
-}
-
-function determinarUsuarioPagina() {
-    const currentPath = window.location.pathname;
-    if (currentPath.includes('meuperfil') || currentPath.includes('perfil2')) {
-        return '504586268781576202';
-    }
-    return '504586268781576202';
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const avatarImg = document.querySelector('.avatarImage');
-    if (avatarImg) {
-        avatarImg.src = '';
-    }
-    
-    const userId = determinarUsuarioPagina();
-    atualizarPerfilDiscord(userId);
-    setInterval(() => atualizarPerfilDiscord(userId), 5000); // 5sec
-});
-
-const avatarImg = document.querySelector('.avatarImage');
-if (avatarImg) {
-    avatarImg.addEventListener('click', function() {
-        console.log('Atualizando avatar manualmente...');
-        const userId = determinarUsuarioPagina();
-        atualizarPerfilDiscord(userId);
     });
 }
