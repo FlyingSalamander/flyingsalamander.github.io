@@ -1118,3 +1118,8 @@ body {
         discordFloat 8s ease-in-out infinite,
         discordShimmer 12s ease-in-out infinite;
 }
+
+/* Prevent decoration flickering */
+.avatarDecoration {
+    transition: opacity 0.3s ease;
+}
