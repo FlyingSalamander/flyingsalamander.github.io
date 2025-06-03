@@ -1072,16 +1072,16 @@ body {
 
 @keyframes discordFloat {
   0%, 100% {
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translate(-50%, -50%);
   }
   25% {
-    transform: translate(-50%, -51%) scale(1.11);
+    transform: translate(-50%, -51%);
   }
   50% {
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translate(-50%, -50%);
   }
   75% {
-    transform: translate(-50%, -49%) scale(1.09);
+    transform: translate(-50%, -49%);
   }
 }
 
@@ -1100,19 +1100,19 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 120%; /* Increased size */
-    height: 120%; /* Increased size */
+    width: 110%;
+    height: 110%;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     pointer-events: none;
     z-index: 2;
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translate(-50%, -50%);
     animation: 
         discordFloat 8s ease-in-out infinite,
         discordShimmer 12s ease-in-out infinite;
-    /* Remove after debugging */
-    background-color: rgba(0,0,0,0.2);
+    /* Remove background color */
+    background-color: transparent !important;
 }
 
 /* Prevent decoration flickering */
@@ -1157,14 +1157,18 @@ body {
 /* Status positioning fix */
 .discordAvatar .discordStatus {
     position: absolute;
-    bottom: 0px !important;
-    right: 0px !important;
+    bottom: 0 !important;
+    right: 0 !important;
     height: 20% !important;
     width: 20% !important;
     min-width: 16px;
     min-height: 16px;
-    z-index: 3 !important;
-    border: 2px solid #2f3136 !important;
+    z-index: 3;
     border-radius: 50%;
-    transform: translate(25%, 25%) !important;
+    /* Remove black border */
+    border: none !important;
+    /* Add subtle shadow instead */
+    box-shadow: 0 0 0 2px rgba(47, 49, 54, 0.8);
+    /* Original positioning */
+    transform: translate(15%, 15%) !important;
 }
