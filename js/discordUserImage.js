@@ -40,19 +40,17 @@ function atualizarPerfilDiscord(userId) {
             const asset = user.avatar_decoration_data.asset;
             const decorationUrl = `https://cdn.discordapp.com/avatar-decoration-presets/${asset}.png?size=512`;
             
-            // Create new image to force load
-            const testImg = new Image();
-            testImg.onload = function() {
-                // Apply only after image loads successfully
+            // Use this reliable loading method
+            const img = new Image();
+            img.onload = () => {
                 decorationElement.style.backgroundImage = `url('${decorationUrl}')`;
                 decorationElement.style.display = 'block';
-                console.log('Decoration loaded successfully');
             };
-            testImg.onerror = function() {
-                console.error('Failed to load decoration image');
+            img.onerror = () => {
+                console.error('Failed to load decoration');
                 decorationElement.style.display = 'none';
             };
-            testImg.src = decorationUrl;
+            img.src = decorationUrl;
         } else {
             decorationElement.style.display = 'none';
         }
